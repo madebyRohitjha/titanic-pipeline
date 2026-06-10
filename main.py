@@ -1,3 +1,4 @@
+from sklearn.preprocessing import OneHotEncoder
 import pandas as pd
 
 df = pd.read_csv("train.csv")
@@ -36,3 +37,10 @@ from sklearn.impute import SimpleImputer
 num_pipeline= Pipeline([("imputer", SimpleImputer(strategy="median"))])
 
 print(num_pipeline)
+
+cat_pipeline = Pipeline([
+    ("imputer",SimpleImputer(strategy ="most_frequent")),
+    ("encoder",OneHotEncoder())
+    ])
+
+print(cat_pipeline)
