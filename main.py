@@ -44,3 +44,12 @@ cat_pipeline = Pipeline([
     ])
 
 print(cat_pipeline)
+
+from sklearn.compose import ColumnTransformer
+preprocessor = ColumnTransformer([
+    ("num",num_pipeline, numerical_cols),
+    ("cat",cat_pipeline,categorical_cols)
+
+])
+
+print(preprocessor)
