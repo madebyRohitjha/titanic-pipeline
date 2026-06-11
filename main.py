@@ -53,3 +53,27 @@ preprocessor = ColumnTransformer([
 ])
 
 print(preprocessor)
+
+from sklearn.ensemble import RandomForestClassifier
+
+model = RandomForestClassifier()
+print (model)
+
+from sklearn.pipeline import Pipeline
+
+pipeline = Pipeline ([
+    ("preprocessor", preprocessor),
+    ("model", model)
+])
+
+print (pipeline)
+
+pipeline.fit(X_train, y_train)
+
+y_pred = pipeline.predict(X_test)
+
+from sklearn.metrics import accuracy_score
+
+accuracy = accuracy_score(y_test, y_pred)
+
+print("Accuracy :", accuracy)
