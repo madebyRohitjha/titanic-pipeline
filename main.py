@@ -94,3 +94,13 @@ scores = cross_val_score(pipeline,X_train, y_train, cv=5)
 
 print(scores)
 print("average:", scores.mean()) 
+
+rf = pipeline.named_steps["model"]
+
+print(rf.feature_importances_)
+
+feature_names = pipeline.named_steps[
+    "preprocessor"
+].get_feature_names_out()
+
+print(feature_names)

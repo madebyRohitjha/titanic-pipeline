@@ -48,6 +48,11 @@ Titanic dataset from Kaggle.
 * Feature Importance Analysis
 * Streamlit Deployment
 
+Feature Importance Analysis
+
+The Random Forest model identified Fare and Age as the most influential numerical features for predicting survival. Gender was also a strong predictor, with the combined importance of Sex-related features exceeding 29% of the model's decision-making process. Passenger class contributed moderately, while embarkation port had minimal predictive value. These findings align with historical accounts indicating that wealth, age, and gender significantly influenced survival outcomes during the Titanic disaster.
+
+
 ## Author
 
 Rohit
