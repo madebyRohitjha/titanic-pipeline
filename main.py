@@ -83,3 +83,14 @@ from sklearn.metrics import confusion_matrix
 cm = confusion_matrix(y_test, y_pred)
 
 print(cm)
+
+from sklearn.metrics import classification_report
+
+print(classification_report(y_test, y_pred))
+
+from sklearn.model_selection import cross_val_score
+
+scores = cross_val_score(pipeline,X_train, y_train, cv=5)
+
+print(scores)
+print("average:", scores.mean()) 
