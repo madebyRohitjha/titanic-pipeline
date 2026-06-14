@@ -3,13 +3,26 @@ import pandas as pd
 
 df = pd.read_csv("train.csv")
 
+#feature engineering
+
+df["FamilySize"] = df["SibSp"] + df["Parch"] + 1
+
+df["is Alone"] = (
+    df["FamilySize"] == 1
+).astype(int)
+
+df["Title"] = df["Name"].str.extract(
+    r" ([A-Za-z]+)\."
+)
+
 #print(df.head())
 #print(df.info())
 X= df.drop(["Survived","PassengerId","Name","Ticket","Cabin"],axis=1)
 
 y = df["Survived"]
 
-#print(X.head())
+print(X.head())
+print(X.columns)
 #print(y.head())
 
 from sklearn.model_selection import train_test_split
@@ -40,7 +53,7 @@ print(num_pipeline)
 
 cat_pipeline = Pipeline([
     ("imputer",SimpleImputer(strategy ="most_frequent")),
-    ("encoder",OneHotEncoder())
+    ("encoder",OneHotEncoder(handle_unknown="ignore"))
     ])
 
 print(cat_pipeline)
