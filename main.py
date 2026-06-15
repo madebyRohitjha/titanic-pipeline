@@ -1,3 +1,4 @@
+from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import OneHotEncoder
 import pandas as pd
 
@@ -47,7 +48,8 @@ print("categorical_coulmns",categorical_cols)
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 
-num_pipeline= Pipeline([("imputer", SimpleImputer(strategy="median"))])
+num_pipeline= Pipeline([("imputer", SimpleImputer(strategy="median")),
+                        ("scalar",StandardScaler())])
 
 print(num_pipeline)
 
