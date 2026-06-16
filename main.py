@@ -1,3 +1,4 @@
+
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import OneHotEncoder
 import pandas as pd
@@ -48,8 +49,8 @@ print("categorical_coulmns",categorical_cols)
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 
-num_pipeline= Pipeline([("imputer", SimpleImputer(strategy="median")),
-                        ("scalar",StandardScaler())])
+num_pipeline= Pipeline([("imputer", SimpleImputer(strategy="median"))
+                       ])
 
 print(num_pipeline)
 
@@ -119,3 +120,40 @@ feature_names = pipeline.named_steps[
 ].get_feature_names_out()
 
 print(feature_names)
+
+#logestic regression
+
+from sklearn.linear_model import LogisticRegression
+log_model = LogisticRegression(
+    max_iter = 1000
+)
+
+log_pipeline = Pipeline([
+    ("preprocessor", preprocessor),
+    ("model", log_model)
+])
+log_pipeline.fit(X_train, y_train)
+log_y_pred = log_pipeline.predict(X_test)
+
+log_accuracy = accuracy_score(
+    y_test,
+    log_y_pred
+)
+
+print(
+    "Logestic Regression Accuracy :",
+    log_accuracy
+)
+
+log_score = cross_val_score(
+    log_pipeline,
+    X_train,
+    y_train,
+    cv = 5
+)
+
+print(log_score)
+print(
+    "Logestic Regression Average :",
+    log_score.mean()
+)
