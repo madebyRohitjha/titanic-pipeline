@@ -1,63 +1,111 @@
-# Titanic Survival Prediction
+# Titanic Survival Prediction 
 
 ## Project Overview
 
 This project predicts whether a passenger survived the Titanic disaster using Machine Learning.
 
+The goal of this project was to practice:
+
+* Data preprocessing
+* Feature engineering
+* Building ML pipelines
+* Model comparison
+* Model evaluation
+
+---
+
 ## Dataset
 
-Titanic dataset from Kaggle.
+Dataset: Titanic Dataset from Kaggle
+
+Target Variable:
+
+* `Survived`
+
+  * 0 = Did not survive
+  * 1 = Survived
+
+---
+
+## Features Used
+
+* Pclass
+* Sex
+* Age
+* SibSp
+* Parch
+* Fare
+* Embarked
+
+### Engineered Features
+
+* FamilySize
+* IsAlone
+* Title extracted from passenger names
+
+---
+
+## Data Preprocessing
+
+### Numerical Features
+
+* Missing values filled using Median Imputation.
+
+### Categorical Features
+
+* Missing values filled using Most Frequent Imputation.
+* One Hot Encoding applied.
+
+### Pipeline Used
+
+* Pipeline
+* ColumnTransformer
+
+---
+
+## Models Trained
+
+### Random Forest Classifier
+
+* Accuracy: 83.80%
+* Cross Validation Score: 79.78%
+
+### Logistic Regression
+
+* Accuracy: 81.56%
+* Cross Validation Score: 82.72%
+
+---
+
+## Key Learnings
+
+* Feature engineering can significantly improve model performance.
+* Not every preprocessing technique improves every model.
+* Random Forest generally does not require feature scaling.
+* Cross-validation provides a more reliable estimate of model performance than a single train-test split.
+* Different algorithms can behave very differently on the same dataset.
+
+---
 
 ## Technologies Used
 
 * Python
 * Pandas
-* NumPy
 * Scikit-Learn
-* Matplotlib
+* NumPy
 
-## Machine Learning Pipeline
-
-1. Data Cleaning
-2. Missing Value Handling
-3. Feature Encoding
-4. Feature Scaling
-5. Column Transformer
-6. Random Forest Classifier
-7. Model Evaluation
-
-## Results
-
-* Accuracy: 82.1%
-* Confusion Matrix:
-
-[[90, 15],
-[17, 57]]
-
-## Key Features
-
-* Sex
-* Age
-* Fare
-* Passenger Class
+---
 
 ## Future Improvements
 
-* Cross Validation
-* Hyperparameter Tuning
-* Feature Importance Analysis
-* Streamlit Deployment
+* Hyperparameter tuning using GridSearchCV.
+* Try additional algorithms such as XGBoost and SVM.
+* Deploy the model as a web application.
 
-Feature Importance Analysis
-
-The Random Forest model identified Fare and Age as the most influential numerical features for predicting survival. Gender was also a strong predictor, with the combined importance of Sex-related features exceeding 29% of the model's decision-making process. Passenger class contributed moderately, while embarkation port had minimal predictive value. These findings align with historical accounts indicating that wealth, age, and gender significantly influenced survival outcomes during the Titanic disaster.
-
-| Model               | Accuracy | Cross Validation |
-| ------------------- | -------- | ---------------- |
-| Random Forest       | 83.80%   | 79.78%           |
-| Logistic Regression | 81.56%   | 82.72%           |
-
+---
 
 ## Author
 
-Rohit
+Rohit Jha
+
+Learning AI and Machine Learning by building projects and sharing the journey publicly.

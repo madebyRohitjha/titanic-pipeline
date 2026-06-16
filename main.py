@@ -157,3 +157,4 @@ print(
     "Logestic Regression Average :",
     log_score.mean()
 )
+
